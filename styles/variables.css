@@ -1,0 +1,550 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+
+  --font-weight-bold: 700;
+  
+  /* Danger/Error color */
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --danger-bg: color-mix(in srgb, var(--danger) 5%, transparent);
+  
+  /* Spacing */
+  --space-xs: 0.25em;
+  --space-sm: 0.5em;
+  --space-md: 1em;
+  --space-lg: 2em;
+  --space-xl: 3em;
+  --space-xxl: 4em;
+  
+  /* Typography */
+  --font-sans-serif: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-monospace: 'SF Mono', 'Cascadia Code', 'Monaco', 'Courier New', monospace;
+  --font-serif: 'Georgia', Charter, 'Times New Roman', Times, serif;
+  --font-base: var(--font-sans-serif);
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  
+  /* Animation */
+  --transition-fast: 150ms ease-out;
+  --transition-base: 250ms ease-out;
+  --transition-slow: 350ms ease-out;
+  
+  /* Borders */
+  --border-radius-sm: 4px;
+  --border-radius: 8px; /* The default, unless otherwise specified */
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 24px;
+  --border-radius-full: 9999px;
+
+  --border-width: 1px;
+  --border-width-emphasis:2px;
+
+  /* Drop Shadows */
+  --shadow-sm: 0 1px 3px rgba(27, 27, 24, 0.06), 0 1.5px 5px rgba(27,27,24,0.03);
+  --shadow-md: 0 2px 8px rgba(27, 27, 24, 0.10), 0 3px 16px rgba(27,27,24,0.05);
+}
+
+/* ============================================
+   SAND PALETTE - Light Mode (Default)
+   ============================================ */
+:root[data-palette="sand"],
+:root:not([data-palette]) {
+  /* Base Color Scale - Radix Sand */
+  --sand1: #fdfdfc;
+  --sand2: #f9f9f8;
+  --sand3: #f3f3f2;
+  --sand4: #ededec;
+  --sand5: #e8e8e6;
+  --sand6: #e2e2e0;
+  --sand7: #dbdbd9;
+  --sand8: #c8c7c4;
+  --sand9: #908e89;
+  --sand10: #868480;
+  --sand11: #706f6b;
+  --sand12: #1b1b18;
+
+  /* Semantic Colors - Light Mode */
+  --page-bg: var(--sand1);
+  --text-primary: var(--sand12);
+  --text-secondary: var(--sand11);
+  --text-tertiary: var(--sand8);
+
+  --surface-primary: var(--sand1);
+  --surface-secondary: var(--sand2);
+  --surface-tertiary: var(--sand3);
+  --surface-tertiary-hover: var(--sand4);
+  
+  /* Accent color - defaults to palette #9, customizable via settings */
+  --accent: #908e89;
+  --accent-text: #000000; /* Dynamically set based on WCAG contrast */
+  --accent-50: color-mix(in srgb, var(--accent) 50%, white);
+  --accent-dark: color-mix(in srgb, var(--accent) 90%, black);
+  
+  /* Clock-Calendar Cells */
+  --cell-bg: var(--sand2);
+  --hover-bg: var(--sand4);
+  --cell-elapsed: var(--sand5);
+  --cell-elapsed-hover: var(--sand6);
+  
+  --cell-current: var(--accent);
+  --cell-upcoming: var(--sand3);
+  --cell-upcoming-hover: var(--sand4);
+  
+  --border-color: var(--sand6);
+  --border-color-hover: var(--sand7);
+  --border-color-subtle: var(--sand4);
+}
+
+/* SAND PALETTE - Dark Mode */
+:root[data-theme="dark"][data-palette="sand"],
+:root[data-theme="dark"]:not([data-palette]) {
+  /* Base Color Scale - Radix SandDark */
+  --sand1: #111110;
+  --sand2: #191918;
+  --sand3: #222221;
+  --sand4: #2a2a28;
+  --sand5: #31312e;
+  --sand6: #3b3a37;
+  --sand7: #494844;
+  --sand8: #62605b;
+  --sand9: #6f6d66;
+  --sand10: #7c7b74;
+  --sand11: #b5b3ad;
+  --sand12: #eeeeec;
+  
+  /* Semantic Colors - Dark Mode */
+  --page-bg: var(--sand1);
+  --text-primary: var(--sand12);
+  --text-secondary: var(--sand11);
+  --text-tertiary: var(--sand8);
+
+  --surface-primary: var(--sand2);
+  --surface-secondary: var(--sand1);
+  --surface-tertiary: var(--sand3);
+  --surface-tertiary-hover: var(--sand4);
+  
+  /* Accent color - defaults to palette #9 */
+  --accent: #6f6d66;
+  
+  --cell-bg: var(--sand2);
+  --hover-bg: var(--sand4);
+
+  --cell-elapsed: var(--sand5);
+  --cell-elapsed-hover: var(--sand6);
+
+  --cell-current: var(--accent);
+  
+  --cell-upcoming: var(--sand3);
+  --cell-upcoming-hover: var(--sand4);
+  
+  --border-color: var(--sand6);
+  --border-color-hover: var(--sand7);
+  --border-color-subtle: var(--sand4);
+
+  /* Drop Shadows */
+  --shadow-sm: 0 1px 2px rgba(238, 238, 236, 0.1);
+}
+
+/* ============================================
+   TOMATO PALETTE - Light Mode
+   ============================================ */
+:root[data-palette="tomato"] {
+  --tomato1: #fffcfc;
+  --tomato2: #fff8f7;
+  --tomato3: #feebe7;
+  --tomato4: #ffdcd3;
+  --tomato5: #ffcdc2;
+  --tomato6: #fdbdaf;
+  --tomato7: #f5a898;
+  --tomato8: #ec8e7b;
+  --tomato9: #e54d2e;
+  --tomato10: #dd4425;
+  --tomato11: #d13415;
+  --tomato12: #5c271f;
+
+  /* Semantic Colors - Light Mode */
+  --page-bg: var(--tomato1);
+  --text-primary: var(--tomato12);
+  --text-secondary: var(--tomato11);
+  --text-tertiary: var(--tomato8);
+
+  --surface-primary: var(--tomato1);
+  --surface-secondary: var(--tomato2);
+  --surface-tertiary: var(--tomato3);
+  --surface-tertiary-hover: var(--tomato4);
+  
+  /* Accent color - defaults to palette #9 */
+  --accent: var(--tomato9);
+  --accent-50: color-mix(in srgb, var(--accent) 50%, white);
+  --accent-dark: color-mix(in srgb, var(--accent) 90%, black);
+  
+  /* Clock-Calendar Cells */
+  --cell-bg: var(--tomato2);
+  --hover-bg: var(--tomato4);
+  --cell-elapsed: var(--tomato5);
+  --cell-elapsed-hover: var(--tomato6);
+  
+  --cell-current: var(--accent);
+  --cell-upcoming: var(--tomato3);
+  --cell-upcoming-hover: var(--tomato4);
+  
+  --border-color: var(--tomato6);
+  --border-color-hover: var(--tomato7);
+  --border-color-subtle: var(--tomato4);
+}
+
+/* TOMATO PALETTE - Dark Mode */
+:root[data-theme="dark"][data-palette="tomato"] {
+  --tomato1: #181111;
+  --tomato2: #1f1513;
+  --tomato3: #391714;
+  --tomato4: #4e1511;
+  --tomato5: #5e1c16;
+  --tomato6: #6e2920;
+  --tomato7: #853a2d;
+  --tomato8: #ac4d39;
+  --tomato9: #e54d2e;
+  --tomato10: #ec6142;
+  --tomato11: #ff977d;
+  --tomato12: #fbd3cb;
+
+  /* Semantic Colors - Dark Mode */
+  --page-bg: var(--tomato1);
+  --text-primary: var(--tomato12);
+  --text-secondary: var(--tomato11);
+  --text-tertiary: var(--tomato8);
+
+  --surface-primary: var(--tomato2);
+  --surface-secondary: var(--tomato1);
+  --surface-tertiary: var(--tomato3);
+  --surface-tertiary-hover: var(--tomato4);
+  
+  /* Accent color - defaults to palette #9 */
+  --accent: var(--tomato9);
+  
+  --cell-bg: var(--tomato2);
+  --hover-bg: var(--tomato4);
+
+  --cell-elapsed: var(--tomato5);
+  --cell-elapsed-hover: var(--tomato6);
+
+  --cell-current: var(--accent);
+  
+  --cell-upcoming: var(--tomato3);
+  --cell-upcoming-hover: var(--tomato4);
+  
+  --border-color: var(--tomato6);
+  --border-color-hover: var(--tomato7);
+  --border-color-subtle: var(--tomato4);
+
+  /* Drop Shadows */
+  --shadow-sm: 0 1px 2px rgba(251, 211, 203, 0.1);
+}
+
+/* ============================================
+   BLUE PALETTE - Light Mode
+   ============================================ */
+:root[data-palette="blue"] {
+  --blue1: #fbfdff;
+  --blue2: #f4faff;
+  --blue3: #e6f4fe;
+  --blue4: #d5efff;
+  --blue5: #c2e5ff;
+  --blue6: #acd8fc;
+  --blue7: #8ec8f6;
+  --blue8: #5eb1ef;
+  --blue9: #0090ff;
+  --blue10: #0588f0;
+  --blue11: #0d74ce;
+  --blue12: #113264;
+
+  /* Semantic Colors - Light Mode */
+  --page-bg: var(--blue1);
+  --text-primary: var(--blue12);
+  --text-secondary: var(--blue11);
+  --text-tertiary: var(--blue8);
+
+  --surface-primary: var(--blue1);
+  --surface-secondary: var(--blue2);
+  --surface-tertiary: var(--blue3);
+  --surface-tertiary-hover: var(--blue4);
+  
+  /* Accent color - defaults to palette #9 */
+  --accent: var(--blue9);
+  --accent-50: color-mix(in srgb, var(--accent) 50%, white);
+  --accent-dark: color-mix(in srgb, var(--accent) 90%, black);
+  
+  /* Clock-Calendar Cells */
+  --cell-bg: var(--blue2);
+  --hover-bg: var(--blue4);
+  --cell-elapsed: var(--blue5);
+  --cell-elapsed-hover: var(--blue6);
+  
+  --cell-current: var(--accent);
+  --cell-upcoming: var(--blue3);
+  --cell-upcoming-hover: var(--blue4);
+  
+  --border-color: var(--blue6);
+  --border-color-hover: var(--blue7);
+  --border-color-subtle: var(--blue4);
+}
+
+/* BLUE PALETTE - Dark Mode */
+:root[data-theme="dark"][data-palette="blue"] {
+  --blue1: #0d1520;
+  --blue2: #111927;
+  --blue3: #0d2847;
+  --blue4: #003362;
+  --blue5: #004074;
+  --blue6: #104d87;
+  --blue7: #205d9e;
+  --blue8: #2870bd;
+  --blue9: #0090ff;
+  --blue10: #3b9eff;
+  --blue11: #70b8ff;
+  --blue12: #c2e6ff;
+
+  /* Semantic Colors - Dark Mode */
+  --page-bg: var(--blue1);
+  --text-primary: var(--blue12);
+  --text-secondary: var(--blue11);
+  --text-tertiary: var(--blue8);
+
+  --surface-primary: var(--blue2);
+  --surface-secondary: var(--blue1);
+  --surface-tertiary: var(--blue3);
+  --surface-tertiary-hover: var(--blue4);
+  
+  /* Accent color - defaults to palette #9 */
+  --accent: var(--blue9);
+  
+  --cell-bg: var(--blue2);
+  --hover-bg: var(--blue4);
+
+  --cell-elapsed: var(--blue5);
+  --cell-elapsed-hover: var(--blue6);
+
+  --cell-current: var(--accent);
+  
+  --cell-upcoming: var(--blue3);
+  --cell-upcoming-hover: var(--blue4);
+  
+  --border-color: var(--blue6);
+  --border-color-hover: var(--blue7);
+  --border-color-subtle: var(--blue4);
+
+  /* Drop Shadows */
+  --shadow-sm: 0 1px 2px rgba(194, 230, 255, 0.1);
+}
+
+/* ============================================
+   IRIS PALETTE - Light Mode
+   ============================================ */
+:root[data-palette="iris"] {
+  --iris1: #fdfdff;
+  --iris2: #f8f8ff;
+  --iris3: #f0f1fe;
+  --iris4: #e6e7ff;
+  --iris5: #dadcff;
+  --iris6: #cbcdff;
+  --iris7: #b8baf8;
+  --iris8: #9b9ef0;
+  --iris9: #5b5bd6;
+  --iris10: #5151cd;
+  --iris11: #5753c6;
+  --iris12: #272962;
+
+  /* Semantic Colors - Light Mode */
+  --page-bg: var(--iris1);
+  --text-primary: var(--iris12);
+  --text-secondary: var(--iris11);
+  --text-tertiary: var(--iris8);
+
+  --surface-primary: var(--iris1);
+  --surface-secondary: var(--iris2);
+  --surface-tertiary: var(--iris3);
+  --surface-tertiary-hover: var(--iris4);
+  
+  /* Accent color - defaults to palette #9 */
+  --accent: var(--iris9);
+  --accent-50: color-mix(in srgb, var(--accent) 50%, white);
+  --accent-dark: color-mix(in srgb, var(--accent) 90%, black);
+  
+  /* Clock-Calendar Cells */
+  --cell-bg: var(--iris2);
+  --hover-bg: var(--iris4);
+  --cell-elapsed: var(--iris5);
+  --cell-elapsed-hover: var(--iris6);
+  
+  --cell-current: var(--accent);
+  --cell-upcoming: var(--iris3);
+  --cell-upcoming-hover: var(--iris4);
+  
+  --border-color: var(--iris6);
+  --border-color-hover: var(--iris7);
+  --border-color-subtle: var(--iris4);
+}
+
+/* IRIS PALETTE - Dark Mode */
+:root[data-theme="dark"][data-palette="iris"] {
+  --iris1: #13131e;
+  --iris2: #171625;
+  --iris3: #202248;
+  --iris4: #262a65;
+  --iris5: #303374;
+  --iris6: #3d3e82;
+  --iris7: #4a4a95;
+  --iris8: #5958b1;
+  --iris9: #5b5bd6;
+  --iris10: #6e6ade;
+  --iris11: #b1a9ff;
+  --iris12: #e0dffe;
+
+  /* Semantic Colors - Dark Mode */
+  --page-bg: var(--iris1);
+  --text-primary: var(--iris12);
+  --text-secondary: var(--iris11);
+  --text-tertiary: var(--iris8);
+
+  --surface-primary: var(--iris2);
+  --surface-secondary: var(--iris1);
+  --surface-tertiary: var(--iris3);
+  --surface-tertiary-hover: var(--iris4);
+  
+  /* Accent color - defaults to palette #9 */
+  --accent: var(--iris9);
+  
+  --cell-bg: var(--iris2);
+  --hover-bg: var(--iris4);
+
+  --cell-elapsed: var(--iris5);
+  --cell-elapsed-hover: var(--iris6);
+
+  --cell-current: var(--accent);
+  
+  --cell-upcoming: var(--iris3);
+  --cell-upcoming-hover: var(--iris4);
+  
+  --border-color: var(--iris6);
+  --border-color-hover: var(--iris7);
+  --border-color-subtle: var(--iris4);
+
+  /* Drop Shadows */
+  --shadow-sm: 0 1px 2px rgba(224, 223, 254, 0.1);
+}
+
+/* ============================================
+   JADE PALETTE - Light Mode
+   ============================================ */
+:root[data-palette="jade"] {
+  --jade1: #fbfefd;
+  --jade2: #f4fbf7;
+  --jade3: #e6f7ed;
+  --jade4: #d6f1e3;
+  --jade5: #c3e9d7;
+  --jade6: #acdec8;
+  --jade7: #8bceb6;
+  --jade8: #56ba9f;
+  --jade9: #29a383;
+  --jade10: #26997b;
+  --jade11: #208368;
+  --jade12: #1d3b31;
+
+  /* Using jadeA values for light mode as provided */
+  --jadeA1: #00c080;
+  --jadeA2: #00a346;
+  --jadeA3: #00ae48;
+  --jadeA4: #00a851;
+  --jadeA5: #00a255;
+  --jadeA6: #009a57;
+  --jadeA7: #00945f;
+  --jadeA8: #00976e;
+  --jadeA9: #00916b;
+  --jadeA10: #008764;
+  --jadeA11: #007152;
+  --jadeA12: #002217;
+
+  /* Semantic Colors - Light Mode (using jadeA scale) */
+  --page-bg: #fbfefd;
+  --text-primary: var(--jadeA12);
+  --text-secondary: var(--jadeA11);
+  --text-tertiary: var(--jadeA8);
+
+  --surface-primary: #fbfefd;
+  --surface-secondary: #f4fbf7;
+  --surface-tertiary: #e6f7ed;
+  --surface-tertiary-hover: #d6f1e3;
+  
+  /* Accent color - defaults to palette #9 */
+  --accent: var(--jadeA9);
+  --accent-50: color-mix(in srgb, var(--accent) 50%, white);
+  --accent-dark: color-mix(in srgb, var(--accent) 90%, black);
+  
+  /* Clock-Calendar Cells */
+  --cell-bg: #f4fbf7;
+  --hover-bg: #d6f1e3;
+  --cell-elapsed: #c3e9d7;
+  --cell-elapsed-hover: #acdec8;
+  
+  --cell-current: var(--accent);
+  --cell-upcoming: #e6f7ed;
+  --cell-upcoming-hover: #d6f1e3;
+  
+  --border-color: #acdec8;
+  --border-color-hover: #8bceb6;
+  --border-color-subtle: #d6f1e3;
+}
+
+/* JADE PALETTE - Dark Mode */
+:root[data-theme="dark"][data-palette="jade"] {
+  --jade1: #0d1512;
+  --jade2: #121c18;
+  --jade3: #0f2e22;
+  --jade4: #0b3b2c;
+  --jade5: #114837;
+  --jade6: #1b5745;
+  --jade7: #246854;
+  --jade8: #2a7e68;
+  --jade9: #29a383;
+  --jade10: #27b08b;
+  --jade11: #1fd8a4;
+  --jade12: #adf0d4;
+
+  /* Semantic Colors - Dark Mode */
+  --page-bg: var(--jade1);
+  --text-primary: var(--jade12);
+  --text-secondary: var(--jade11);
+  --text-tertiary: var(--jade8);
+
+  --surface-primary: var(--jade2);
+  --surface-secondary: var(--jade1);
+  --surface-tertiary: var(--jade3);
+  --surface-tertiary-hover: var(--jade4);
+  
+  /* Accent color - defaults to palette #9 */
+  --accent: var(--jade9);
+  
+  --cell-bg: var(--jade2);
+  --hover-bg: var(--jade4);
+
+  --cell-elapsed: var(--jade5);
+  --cell-elapsed-hover: var(--jade6);
+
+  --cell-current: var(--accent);
+  
+  --cell-upcoming: var(--jade3);
+  --cell-upcoming-hover: var(--jade4);
+  
+  --border-color: var(--jade6);
+  --border-color-hover: var(--jade7);
+  --border-color-subtle: var(--jade4);
+
+  /* Drop Shadows */
+  --shadow-sm: 0 1px 2px rgba(173, 240, 212, 0.1);
+}
+

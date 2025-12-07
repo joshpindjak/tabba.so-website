@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabba - A new tab that you'll actually use</title>
+  <meta name="description" content="Tabba is a new tab extension that shows every hour of your year, with notes, tools, and zero tracking.">
+  <meta name="keywords" content="tabba, new tab, extension, notes, tools, zero tracking">
+  <meta name="author" content="Tabba">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <meta name="google" content="notranslate">
+  <meta name="google-site-verification" content="google-site-verification=google-site-verification">
+  <!-- Phosphor Icons -->
+  <link rel="stylesheet" type="text/css" href="assets/phosphor-icons/regular/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/phosphor-icons/fill/style.css">
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/variables.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/landing.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="e64052cb-23e2-4da2-88e3-499552ff17c7"></script>
+</head>
+<body>
+  <div class="page-content">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-content">
+          <a href="#" class="navbar-logo" aria-label="Home">
+            <img src="assets/tabba-logo.svg" alt="Tabba logo" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-column hero-column-left">
+            <h1 class="hero-headline">Built for clarity, designed for focus</h1>
+            <!--<h1 class="hero-headline">A new tab that moves at the speed of thought</h1>-->
+          </div>
+          <div class="hero-column hero-column-right">
+            <p class="hero-description">Replace your new tab with a visual hourly grid, fast notes, and six more tools.</p>
+            <div class="hero-actions">
+              <form 
+                  class="waitlist-form" 
+                  id="waitlist-form"
+                  action="https://formspree.io/f/xeoyljqr"
+                  method="POST"
+                  >
+                <input 
+                  type="email" 
+                  class="waitlist-input" 
+                  id="waitlist-email" 
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                  aria-label="Email address"
+                />
+                <button type="submit" class="btn btn-primary waitlist-button">
+                  Join waitlist
+                </button>
+              </form>
+              <div class="waitlist-result" id="waitlist-result"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Screenshot Section -->
+      <div class="preview-container">
+        <div class="container">
+          <div class="hero-screenshot">
+            <div class="screenshot-frame">
+              <div class="screenshot-image-frame">
+                <video class="screenshot-video" id="preview-video" autoplay loop muted playsinline preload="auto">
+                  <source src="assets/01-calendar.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <script>
+    // Load the default video when page is ready
+    const previewVideo = document.getElementById('preview-video');
+    if (previewVideo) {
+      previewVideo.load();
+    }
+    
+    // Waitlist form handler with Formspree
+    const form = document.getElementById('waitlist-form');
+    
+    async function handleSubmit(event) {
+      event.preventDefault();
+      const status = document.getElementById('waitlist-result');
+      const data = new FormData(event.target);
+      
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          status.innerHTML = '<i class="ph ph-check"></i> You\'re on the waitlist!';
+          form.reset();
+          
+          // Track waitlist signup event in Umami
+          if (typeof window.umami !== 'undefined' && window.umami.track) {
+            window.umami.track('waitlist-signup');
+          }
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+            } else {
+              status.innerHTML = "Oops! There was a problem submitting your form";
+            }
+          });
+        }
+      }).catch(error => {
+        status.innerHTML = "Oops! There was a problem submitting your form";
+      });
+    }
+    
+    if (form) {
+      form.addEventListener('submit', handleSubmit);
+    }
+  </script>
+</body>
+</html>
+
