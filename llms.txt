@@ -1,0 +1,196 @@
+# Tabba
+
+> A privacy-first Chrome extension that replaces your new tab with a visual time grid and productivity tools
+
+## Overview
+
+Tabba is a Chrome extension that transforms your new tab page into a powerful productivity workspace centered around a unique visual time grid. Every time you open a new tab, you see your time laid out visually—hours, days, weeks, months, and quarters—helping you feel more present, aware, and in control.
+
+## Core Philosophy
+
+- **Privacy-First**: All data stored locally in your browser. Zero tracking, no external servers, no data collection.
+- **Self-Hosted**: Everything runs in your browser using Chrome's storage APIs. Delete the extension, your data goes with it.
+- **Minimal & Fast**: Clean design, quick load times, no bloat. Built for performance.
+- **No Account Required**: No sign-up, no login, no sync. Just install and use.
+
+## Main Features
+
+### 1. Visual Time Grid (Calendar)
+The centerpiece of Tabba—a grid-based calendar that shows time visually:
+- **Multiple Views**: Year (364 days × 24 hours), Quarter, Month, Week
+- **Time Visualization**: Past hours grayed out, current hour highlighted, future hours visible
+- **Real-Time Updates**: Seconds elapsed/remaining counters update live
+- **Note Integration**: Click any hour cell to create notes for that specific time
+- **Custom Hours**: Show only the hours you care about (e.g., 9 AM - 5 PM)
+
+### 2. Notes
+Hour-based note-taking integrated with the time grid:
+- Click any calendar cell to create/edit a note for that hour (past, present, or future)
+- Visual indicators (dots) show which hours have notes
+- Search and filter notes by date range
+- Sort by newest/oldest
+- Star important notes
+- Tag notes for organization
+- Export all notes to CSV
+- Full-screen mode for focused writing
+
+### 3. To Do
+Task management with powerful filtering:
+- Add, edit, complete, and delete tasks
+- Tag-based organization (shared with Notes)
+- Custom filtered lists with AND/OR logic
+- Drag-and-drop to reorder tasks
+- Separate views for active and completed tasks
+- Task statistics (completion rate, average time to complete)
+
+### 4. Symbols
+Quick access to special characters:
+- 100+ symbols organized by category (arrows, math, currency, legal, weather, etc.)
+- Search by name or category
+- Click to copy to clipboard
+- Recently used section tracks your most-used symbols
+- Three size options (small/medium/large)
+
+### 5. Bookmarks
+Simple link management:
+- Add bookmarks with custom names and URLs
+- Automatic favicon fetching
+- Optional emoji icons (1-2 characters)
+- Click to open in new tab
+- Grid layout with visual cards
+
+### 6. Timezones
+Multi-timezone planner for remote teams:
+- Set home timezone and add others
+- Hour-by-hour timeline grid showing all timezones
+- Configurable work hours with visual highlighting
+- Buffer hours option (hours before/after work)
+- Overlap detection for finding meeting times
+- Date selector for planning future meetings
+
+### 7. Draw
+Pixel art drawing tool:
+- Four grid sizes: 8×8, 16×16, 32×32, 64×64
+- 8-color palette
+- Two brush sizes (1×1 and 4×4 pixels)
+- Save unlimited drawings to gallery
+- Export as PNG
+- Auto-save current drawing
+
+### 8. Tags System
+Unified tagging across Notes and To Do:
+- Create tags on-the-fly
+- Global tag management (edit, delete, reorder)
+- Filter notes by multiple tags with AND/OR logic
+- Create custom filtered lists in To Do tool
+- Tag usage statistics
+
+## Customization
+
+### Appearance
+- **Themes**: Light mode, dark mode, or system default
+- **Color Palettes**: Sand, Tomato, Blue, Iris, Jade
+- **Custom Accent Color**: Pick your own color for highlights and current hour
+- **Custom Cell Colors**: Customize elapsed, current, and upcoming hour colors
+- **Typography**: Sans-serif, monospace (default), or serif
+
+### Settings
+- **Custom Hours Range**: Show only specific hours (e.g., 4 AM - 10 PM)
+- **First Day of Week**: Sunday or Monday
+- **Tooltips**: Show/hide hover tooltips
+- **Tab Display Mode**: Text only, icon & text, or icon only
+- **Toolbar Order**: Drag and drop to reorder tools
+- **Show/Hide Tools**: Toggle visibility of individual tools
+
+### Keyboard Shortcuts
+- Global hotkey system (enable/disable in settings)
+- Quick navigation to tools (` + 1-9)
+- Open settings (` + ,)
+- Customizable modifier key
+
+## Technical Details
+
+### Storage
+- **Chrome Storage Local**: Settings and preferences (~1 KB)
+- **IndexedDB**: Notes, todos, drawings, tags (scalable, virtually unlimited)
+- **No Server**: Everything stored locally, no external APIs
+- **Export/Import**: Full data export as JSON
+
+### Performance
+- Loads in <100 ms
+- Handles 100+ notes without lag
+- Efficient event delegation and caching
+- Minimal reflows and DOM updates
+- Lazy loading for large datasets
+
+### Data Privacy
+- No cookies
+- No tracking
+- No external API calls (except for fetching favicons and Umami analytics on website only)
+- GDPR compliant
+- Complete data portability
+
+## Use Cases
+
+- **Time Awareness**: Visual representation helps you see how time flows
+- **Journaling**: Hour-based notes for reflection and documentation
+- **Planning**: Week/month views for scheduling and time blocking
+- **Remote Work**: Timezone planner for coordinating across time zones
+- **Productivity**: Integrated tools reduce tab clutter
+- **Focus**: Custom hours and minimal design reduce distraction
+
+## Target Audience
+
+- Remote workers and digital nomads
+- Software developers, designers, product managers
+- Anyone who values privacy and data ownership
+- People who prefer visual time representations
+- Users who want productivity tools without tracking
+- Those who appreciate minimal, well-designed software
+
+## Browser Compatibility
+
+- Chrome (primary)
+- Chromium-based browsers (Edge, Brave, Opera, etc.)
+- Requires Manifest V3 support
+
+## Website
+
+- **Domain**: tabba.so
+- **Contact**: hey@tabba.so
+- **Analytics**: Umami (privacy-focused, GDPR compliant, no cookies)
+
+## Project Status
+
+- Active development
+- Preparing for Chrome Web Store launch
+- Free extension (no premium features planned yet)
+- Privacy-first, always
+
+## Key Differentiators
+
+1. **Visual Time Grid**: Unique calendar representation—not just another todo app
+2. **Hour-Based Notes**: Time-bound note-taking for context and reflection
+3. **Privacy-First**: No servers, no tracking, no accounts—true local-first
+4. **All-in-One**: Multiple tools in one extension, reducing browser clutter
+5. **Performance**: Fast load times, efficient storage, smooth interactions
+
+## What Tabba Is NOT
+
+- Not a traditional calendar (no events, appointments, or scheduling)
+- Not a project management tool (simple todo list, not Notion/Asana)
+- Not cloud-synced (everything is local)
+- Not a time tracker (no automatic tracking or analytics)
+- Not focused on gamification or streaks
+
+## Development Notes
+
+- Built with modern JavaScript (ES6+)
+- Vite build system with @crxjs/vite-plugin
+- No external dependencies for core functionality
+- IndexedDB for scalable storage
+- Chrome Extension Manifest V3
+
+---
+
+**Last Updated**: December 2024

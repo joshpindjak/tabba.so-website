@@ -69,8 +69,46 @@
         </div>
       </div>
       
-      <!-- Screenshot Section -->
+      <!-- Preview Module and Screenshot Container -->
       <div class="preview-container">
+        <!-- Tabbed Preview Module -->
+        <div class="container">
+          <div class="preview-module">
+            <p class="preview-description">Tabba replaces your New Tab in your web browser with beautiful and helpful tools:</p>
+            <div class="preview-tabs tab-container">
+              <button class="tab-option active" data-tab="calendar" data-video="01-calendar.mp4">
+                <i class="ph ph-grid-nine"></i>
+                <span>calendar</span>
+              </button>
+              <button class="tab-option" data-tab="todos" data-video="02-todos.mp4">
+                <i class="ph ph-check-circle"></i>
+                <span>to do</span>
+              </button>
+              <button class="tab-option" data-tab="symbols" data-video="03-symbols.mp4">
+                <i class="ph ph-shapes"></i>
+                <span>symbols</span>
+              </button>
+              <button class="tab-option" data-tab="bookmarks" data-video="04-bookmarks.mp4">
+                <i class="ph ph-bookmark"></i>
+                <span>bookmarks</span>
+              </button>
+              <button class="tab-option" data-tab="timezones" data-video="05-timezones.mp4">
+                <i class="ph ph-globe-hemisphere-east"></i>
+                <span>timezones</span>
+              </button>
+              <button class="tab-option" data-tab="draw" data-video="07-draw.mp4">
+                <i class="ph ph-pencil"></i>
+                <span>draw</span>
+              </button>
+              <button class="tab-option" data-tab="time" data-video="08-time.mp4">
+                <i class="ph ph-clock"></i>
+                <span>time</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Screenshot Section -->
         <div class="container">
           <div class="hero-screenshot">
             <div class="screenshot-frame">
@@ -84,11 +122,177 @@
         </div>
       </div>
     </section>
+
+    <!-- Privacy Section -->
+    <section class="privacy-section">
+      <div class="container">
+        <div class="privacy-content">
+          <div class="privacy-left">
+            <h2 class="privacy-headline">Your data stays yours</h2>
+            <p class="privacy-description">All your data is stored locally in your browser. No servers, no cloud sync, no tracking. Delete Tabba and your data goes with it.</p>
+          </div>
+          <div class="privacy-right">
+            <div class="privacy-grid">
+              <div class="privacy-grid-item">
+                <i class="ph ph-lock"></i>
+                <div class="privacy-grid-content">
+                  <h3 class="privacy-grid-title">Entirely Local</h3>
+                  <p class="privacy-grid-text">All data stored in your browser. No servers, no sync, no cloud.</p>
+                </div>
+              </div>
+              <div class="privacy-grid-item">
+                <i class="ph ph-eye-slash"></i>
+                <div class="privacy-grid-content">
+                  <h3 class="privacy-grid-title">Zero Tracking</h3>
+                  <p class="privacy-grid-text">No analytics, no telemetry, no fingerprinting. We see nothing.</p>
+                </div>
+              </div>
+              <div class="privacy-grid-item">
+                <i class="ph ph-robot"></i>
+                <div class="privacy-grid-content">
+                  <h3 class="privacy-grid-title">No AI Training</h3>
+                  <p class="privacy-grid-text">Your notes stay private. Never used to train models or algorithms.</p>
+                </div>
+              </div>
+              <div class="privacy-grid-item">
+                <i class="ph ph-download-simple"></i>
+                <div class="privacy-grid-content">
+                  <h3 class="privacy-grid-title">Export Anytime</h3>
+                  <p class="privacy-grid-text">Download all your data as JSON. Delete whenever you want.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <div class="cta-left">
+            <h2 class="cta-headline">Be the first to try Tabba</h2>
+            <p class="cta-description">Join the waitlist to get early access. We'll email you the moment Tabba is available. No spam, just launch news.</p>
+            <div class="cta-browsers">
+              <!--<p class="cta-browsers-text">Tabba is coming soon for:</p>-->
+              <div class="cta-browsers-list">
+                <div class="cta-browser-item">
+                  <img src="assets/browser-chrome.svg" alt="Chrome" class="cta-browser-logo" />
+                  <span>Chrome</span>
+                </div>
+                <div class="cta-browser-item">
+                  <img src="assets/browser-edge.svg" alt="Edge" class="cta-browser-logo" />
+                  <span>Edge</span>
+                </div>
+                <div class="cta-browser-item">
+                  <img src="assets/browser-brave.svg" alt="Brave" class="cta-browser-logo" />
+                  <span>Brave</span>
+                </div>
+                <div class="cta-browser-item">
+                  <img src="assets/browser-firefox.svg" alt="Firefox" class="cta-browser-logo" />
+                  <span>Firefox</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cta-right">
+            <form 
+                class="waitlist-form cta-waitlist-form" 
+                id="cta-waitlist-form"
+                action="https://formspree.io/f/xeoyljqr"
+                method="POST"
+                >
+              <input 
+                type="email" 
+                class="waitlist-input" 
+                id="cta-waitlist-email" 
+                name="email"
+                placeholder="Enter your email"
+                required
+                aria-label="Email address"
+              />
+              <button type="submit" class="btn btn-primary waitlist-button">
+                Join waitlist
+              </button>
+            </form>
+            <div class="waitlist-result" id="cta-waitlist-result"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-left">
+            <p>© 2025 Tabba.so. Contact <a href="mailto:hey@tabba.so">hey@tabba.so</a></p>
+          </div>
+          <div class="footer-right">
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="footer-separator">|</span>
+            <a href="terms.html">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
   
   <script>
-    // Load the default video when page is ready
+    // Tab switching functionality
+    const previewTabs = document.querySelectorAll('.preview-tabs .tab-option');
     const previewVideo = document.getElementById('preview-video');
+    
+    // Preload all videos for smoother transitions
+    const videoCache = new Map();
+    const videoFiles = Array.from(previewTabs).map(tab => tab.getAttribute('data-video'));
+    videoFiles.forEach(videoFile => {
+      if (videoFile) {
+        const video = document.createElement('video');
+        video.src = `assets/${videoFile}`;
+        video.preload = 'auto';
+        videoCache.set(videoFile, video);
+      }
+    });
+    
+    // Tab switching with simplified transition
+    previewTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        previewTabs.forEach(t => t.classList.remove('active'));
+        
+        // Add active class to clicked tab
+        tab.classList.add('active');
+        
+        // Get video filename from data attribute
+        const videoFile = tab.getAttribute('data-video');
+        
+        // Update video source only if different
+        if (videoFile && previewVideo) {
+          const currentSource = previewVideo.querySelector('source').src;
+          const newSource = `assets/${videoFile}`;
+          
+          // Only load if it's a different video
+          if (!currentSource.includes(videoFile)) {
+            previewVideo.pause();
+            previewVideo.currentTime = 0;
+            previewVideo.querySelector('source').src = newSource;
+            previewVideo.load();
+            
+            // Play once video is ready
+            previewVideo.addEventListener('loadeddata', function playVideo() {
+              previewVideo.play().catch(e => {
+                console.log('Autoplay prevented:', e);
+              });
+              previewVideo.removeEventListener('loadeddata', playVideo);
+            }, { once: true });
+          }
+        }
+      });
+    });
+    
+    // Load the default video when page is ready
     if (previewVideo) {
       previewVideo.load();
     }
@@ -132,6 +336,47 @@
     
     if (form) {
       form.addEventListener('submit', handleSubmit);
+    }
+    
+    // CTA Waitlist form handler (same functionality)
+    const ctaForm = document.getElementById('cta-waitlist-form');
+    
+    async function handleCtaSubmit(event) {
+      event.preventDefault();
+      const status = document.getElementById('cta-waitlist-result');
+      const data = new FormData(event.target);
+      
+      fetch(event.target.action, {
+        method: ctaForm.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          status.innerHTML = '<i class="ph ph-check"></i> You\'re on the waitlist!';
+          ctaForm.reset();
+          
+          // Track waitlist signup event in Umami
+          if (typeof window.umami !== 'undefined' && window.umami.track) {
+            window.umami.track('waitlist-signup');
+          }
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+            } else {
+              status.innerHTML = "Oops! There was a problem submitting your form";
+            }
+          });
+        }
+      }).catch(error => {
+        status.innerHTML = "Oops! There was a problem submitting your form";
+      });
+    }
+    
+    if (ctaForm) {
+      ctaForm.addEventListener('submit', handleCtaSubmit);
     }
   </script>
 </body>

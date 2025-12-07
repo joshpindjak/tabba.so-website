@@ -2,6 +2,7 @@
   --white: #ffffff;
   --black: #000000;
 
+  --font-weight-regular: 400;
   --font-weight-bold: 700;
   
   /* Danger/Error color */
@@ -46,7 +47,7 @@
 
   /* Drop Shadows */
   --shadow-sm: 0 1px 3px rgba(27, 27, 24, 0.06), 0 1.5px 5px rgba(27,27,24,0.03);
-  --shadow-md: 0 2px 8px rgba(27, 27, 24, 0.10), 0 3px 16px rgba(27,27,24,0.05);
+  --shadow-md: 0 2px 8px rgba(27, 27, 24, 0.01), 0 3px 24px rgba(27,27,24,0.05);
 }
 
 /* ============================================
