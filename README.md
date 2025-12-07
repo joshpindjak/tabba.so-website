@@ -26,4 +26,3 @@ This is a standalone website that can be:
 - Served locally for development
 
 Simply open `index.html` in a browser or serve it with any static file server.
-
