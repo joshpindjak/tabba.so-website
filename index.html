@@ -484,25 +484,6 @@
     if (ctaForm) {
       ctaForm.addEventListener('submit', handleCtaSubmit);
     }
-    
-    // Track page view with custom title
-    function trackPageView() {
-      if (typeof window.umami !== 'undefined' && window.umami.track) {
-        window.umami.track(props => ({
-          ...props,
-          url: window.location.pathname,
-          title: 'Home page'
-        }));
-      }
-    }
-    
-    // Wait for Umami to load, then track page view
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', trackPageView);
-    } else {
-      // If DOM is already loaded, wait a bit for Umami script to load
-      setTimeout(trackPageView, 100);
-    }
   </script>
 </body>
 </html>
