@@ -663,7 +663,8 @@
    CTA Section
    ============================================ */
 .cta-section {
-  padding: var(--space-xxl) 0;
+  padding-top: var(--space-xxl);
+  padding-bottom: calc(var(--space-xxl) * 2);
   width: 100%;
 }
 
