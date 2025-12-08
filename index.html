@@ -3,14 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tabba - A new tab that you'll actually use</title>
-  <meta name="description" content="Tabba is a new tab extension that shows every hour of your year, with notes, tools, and zero tracking.">
-  <meta name="keywords" content="tabba, new tab, extension, notes, tools, zero tracking">
+  <title>Tabba - New Tab Extension Built for Clarity and Focus</title>
+  <meta name="description" content="Chrome extension that replaces your new tab with a visual time grid showing every hour of your year. Fast notes, 8 productivity tools, zero tracking. Privacy-first and entirely local.">
+  <meta name="keywords" content="new tab extension, chrome extension, productivity tools, time management, visual calendar, note taking, privacy-first, local storage, new tab replacement, browser extension, self-hosted, local-first, self-hosted extension">
   <meta name="author" content="Tabba">
   <meta name="robots" content="index, follow">
   <meta name="googlebot" content="index, follow">
   <meta name="google" content="notranslate">
-  <meta name="google-site-verification" content="google-site-verification=google-site-verification">
+  
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is https://formspree.io; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://cloud.umami.is https://formspree.io;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tabba.so">
+  <meta property="og:title" content="Tabba - Built for Clarity, Designed for Focus">
+  <meta property="og:description" content="A new tab extension that shows every hour of your year. Visual time grid, fast notes, 8 tools. Privacy-first with zero tracking.">
+  <meta property="og:image" content="https://tabba.so/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Tabba">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://tabba.so">
+  <meta name="twitter:title" content="Tabba - Built for Clarity, Designed for Focus">
+  <meta name="twitter:description" content="A new tab extension that shows every hour of your year. Visual time grid, fast notes, 8 tools. Privacy-first, self hosted, with zero tracking.">
+  <meta name="twitter:image" content="https://tabba.so/assets/og-image.png">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://tabba.so/">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#fdfdfc">
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Tabba",
+    "url": "https://tabba.so",
+    "description": "Tabba is a new tab extension that shows every hour of your year, with notes, tools, and zero tracking."
+  }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Tabba",
+      "applicationCategory": "BrowserApplication",
+      "applicationSubCategory": "ProductivityApplication",
+      "operatingSystem": "Chrome, Edge, Brave, Firefox",
+      "browserRequirements": "Requires Chromium-based browser or Firefox",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/PreOrder"
+      },
+      "description": "A privacy-first browser extension that replaces your new tab with a visual time grid showing every hour of your year. Includes fast note-taking, to-do lists, bookmarks, timezone planner, date calculator, drawing tool, and symbol library. All data stored locally with zero tracking or analytics.",
+      "url": "https://tabba.so",
+      "softwareVersion": "0.4.0",
+      "datePublished": "2025",
+      "author": {
+        "@type": "Organization",
+        "name": "Tabba"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Tabba",
+        "email": "hey@tabba.so",
+        "url": "https://tabba.so"
+      },
+      "featureList": [
+        "Visual hourly time grid (year, quarter, month, week views)",
+        "Fast note-taking for any hour",
+        "To-do list with tags and filtering",
+        "Bookmark manager with custom icons",
+        "Multi-timezone meeting planner",
+        "Date calculator and duration tools",
+        "Pixel art drawing tool",
+        "Symbol copy-paste library",
+        "100% local browser storage (IndexedDB)",
+        "Zero tracking and analytics",
+        "No servers or cloud sync",
+        "Full data export (JSON/CSV)",
+        "Customizable themes and colors"
+      ],
+      "screenshot": "https://tabba.so/assets/og-image.png",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "ratingCount": "1"
+      },
+      "keywords": "new tab, chrome extension, productivity, time management, privacy, local storage, calendar grid, note taking"
+    }
+    </script>
+  
   <!-- Phosphor Icons -->
   <link rel="stylesheet" type="text/css" href="assets/phosphor-icons/regular/style.css">
   <link rel="stylesheet" type="text/css" href="assets/phosphor-icons/fill/style.css">
@@ -266,6 +364,12 @@
         
         // Add active class to clicked tab
         tab.classList.add('active');
+        
+        // Track tab click in Umami
+        if (typeof window.umami !== 'undefined' && window.umami.track) {
+          const tabName = tab.getAttribute('data-tab');
+          window.umami.track('preview-tab-click', { tab: tabName });
+        }
         
         // Get video filename from data attribute
         const videoFile = tab.getAttribute('data-video');
