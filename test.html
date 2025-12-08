@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - Page Not Found | Tabba</title>
-  <meta name="description" content="Page not found - Tabba">
-  <meta name="robots" content="noindex, follow">
+  <meta name="author" content="Tabba">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <meta name="google" content="notranslate">
   
   <!-- Security Headers -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://cloud.umami.is https://api-gateway.umami.dev;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is https://formspree.io; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://cloud.umami.is https://api-gateway.umami.dev https://formspree.io;">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   
@@ -17,9 +15,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png">
-  
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://tabba.so/404.html">
   
   <!-- Theme Color -->
   <meta name="theme-color" content="#fdfdfc">
@@ -32,36 +27,19 @@
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/landing.css">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="e64052cb-23e2-4da2-88e3-499552ff17c7"></script>
-</head>
-<body>
-  <div class="page-content">
-    <!-- Navbar -->
+
+
     <nav class="navbar">
       <div class="container">
         <div class="navbar-content">
-          <a href="/" class="navbar-logo" aria-label="Home">
+          <a href="{{HOME_LINK}}" class="navbar-logo" aria-label="Home">
             <img src="assets/tabba-logo.svg" alt="Tabba logo" aria-hidden="true" />
           </a>
         </div>
       </div>
     </nav>
 
-    <!-- 404 Content Section -->
-    <section class="content-section error-page">
-      <div class="container">
-        <div class="content-wrapper error-content">
-          <h1>404</h1>
-          <p>Page not found. The page you're looking for doesn't exist or has been moved.</p>
-          
-          <div class="btn-group">
-            <a href="/" class="btn btn-primary">Back to Home</a>
-            <a href="mailto:hey@tabba.so" class="btn btn-tertiary">Contact us</a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
@@ -78,28 +56,4 @@
         </div>
       </div>
     </footer>
-  </div>
-  
-  <script>
-    // Track page view with custom title
-    function trackPageView() {
-      if (typeof window.umami !== 'undefined' && window.umami.track) {
-        window.umami.track(props => ({
-          ...props,
-          url: window.location.pathname,
-          title: '404 - Page Not Found'
-        }));
-      }
-    }
-    
-    // Wait for Umami to load, then track page view
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', trackPageView);
-    } else {
-      // If DOM is already loaded, wait a bit for Umami script to load
-      setTimeout(trackPageView, 100);
-    }
-  </script>
-</body>
-</html>
 
