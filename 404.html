@@ -8,8 +8,7 @@
   <meta name="robots" content="noindex, follow">
   
   <!-- Security Headers -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://cloud.umami.is; frame-ancestors 'none';">
-  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://cloud.umami.is https://api-gateway.umami.dev;">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   
@@ -80,6 +79,27 @@
       </div>
     </footer>
   </div>
+  
+  <script>
+    // Track page view with custom title
+    function trackPageView() {
+      if (typeof window.umami !== 'undefined' && window.umami.track) {
+        window.umami.track(props => ({
+          ...props,
+          url: window.location.pathname,
+          title: '404 - Page Not Found'
+        }));
+      }
+    }
+    
+    // Wait for Umami to load, then track page view
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', trackPageView);
+    } else {
+      // If DOM is already loaded, wait a bit for Umami script to load
+      setTimeout(trackPageView, 100);
+    }
+  </script>
 </body>
 </html>
 
