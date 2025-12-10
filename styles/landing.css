@@ -63,7 +63,7 @@
 
 @media (max-width: 991px) {
   .hero-content {
-    gap: var(--space-sm);
+    gap: var(--space-lg);
   }
 }
 
