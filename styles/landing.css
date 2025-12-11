@@ -1094,6 +1094,82 @@
 }
 
 /* ============================================
+   Installation Video Section
+   ============================================ */
+.install-video-section {
+  padding: var(--space-xxl) 0;
+  width: 100%;
+}
+
+.install-video-container {
+  width: 100%;
+  background-color: var(--surface-secondary);
+  border-radius: var(--border-radius-xl);
+  padding: var(--space-md);
+  overflow: hidden;
+  position: relative;
+}
+
+.install-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--border-radius);
+  background-color: var(--surface-primary);
+  cursor: pointer;
+}
+
+/* Hide controls by default */
+.install-video::-webkit-media-controls-panel {
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.install-video::-webkit-media-controls-play-button,
+.install-video::-webkit-media-controls-volume-slider,
+.install-video::-webkit-media-controls-timeline,
+.install-video::-webkit-media-controls-current-time-display,
+.install-video::-webkit-media-controls-time-remaining-display,
+.install-video::-webkit-media-controls-mute-button,
+.install-video::-webkit-media-controls-fullscreen-button {
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+/* Show controls on hover */
+.install-video-container:hover .install-video::-webkit-media-controls-panel,
+.install-video-container:hover .install-video::-webkit-media-controls-play-button,
+.install-video-container:hover .install-video::-webkit-media-controls-volume-slider,
+.install-video-container:hover .install-video::-webkit-media-controls-timeline,
+.install-video-container:hover .install-video::-webkit-media-controls-current-time-display,
+.install-video-container:hover .install-video::-webkit-media-controls-time-remaining-display,
+.install-video-container:hover .install-video::-webkit-media-controls-mute-button,
+.install-video-container:hover .install-video::-webkit-media-controls-fullscreen-button {
+  opacity: 1;
+}
+
+/* For Firefox and other browsers */
+.install-video:not(:hover) {
+  --controls-opacity: 0;
+}
+
+.install-video:hover {
+  --controls-opacity: 1;
+}
+
+@media (max-width: 991px) {
+  .install-video-section {
+    padding: var(--space-xl) 0;
+  }
+  
+  .install-video-container {
+    padding: var(--space-xs);
+    border-radius: var(--border-radius-md);
+  }
+}
+
+/* ============================================
    Responsive Adjustments
    ============================================ */
 @media (max-width: 991px) {

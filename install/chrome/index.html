@@ -119,6 +119,19 @@
       </div>
     </section>
 
+    <!-- Video Section -->
+    <section class="install-video-section">
+      <div class="container">
+        <h2 class="install-headline">Installing Tabba in 20 seconds</h2>
+        <div class="install-video-container">
+          <video class="install-video" loop playsinline autoplay muted>
+            <source src="../../assets/install/tabba-installation-chrome.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
@@ -137,6 +150,35 @@
       </div>
     </footer>
   </div>
+  
+  <script>
+    // Video controls hover behavior
+    const installVideo = document.querySelector('.install-video');
+    const installVideoContainer = document.querySelector('.install-video-container');
+    
+    if (installVideo && installVideoContainer) {
+      let controlsTimeout;
+      
+      // Show controls on hover
+      installVideoContainer.addEventListener('mouseenter', () => {
+        clearTimeout(controlsTimeout);
+        installVideo.setAttribute('controls', 'controls');
+      });
+      
+      // Hide controls when mouse leaves (with small delay)
+      installVideoContainer.addEventListener('mouseleave', () => {
+        controlsTimeout = setTimeout(() => {
+          installVideo.removeAttribute('controls');
+        }, 300);
+      });
+      
+      // Also show controls on video click
+      installVideo.addEventListener('click', () => {
+        clearTimeout(controlsTimeout);
+        installVideo.setAttribute('controls', 'controls');
+      });
+    }
+  </script>
 </body>
 </html>
 
