@@ -320,6 +320,50 @@
       </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="faq-content">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span class="faq-question-text">Will Tabba slow down my browser?</span>
+              <i class="ph ph-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Tabba is built for speed. Unlike web-based tools that require constant server calls, everything runs locally in your browser. The extension loads in under 100ms and uses minimal memory, faster than loading most websites you'd typically see on a new tab. Before launch, we stress-tested the extension with thousands of notes, todo items, and various amounts of other saved data just to ensure Tabba works at scale.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span class="faq-question-text">Can you really not see my data?</span>
+              <i class="ph ph-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Literally impossible. Tabba doesn't have servers, analytics, or any network connection for your data. When we say local-only, we mean your data never leaves your device. If you uninstall Tabba, your data goes with it.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span class="faq-question-text">Is this approved by Chrome?</span>
+              <i class="ph ph-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Tabba is in Chrome's Web Store but currently unlisted during our closed beta. Once we complete beta testing, it'll be publicly available. All extension code (including future updates) is fully reviewed by Chrome's security team before release.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span class="faq-question-text">What if I don't like it?</span>
+              <i class="ph ph-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Just uninstall like any Chrome extension (3 clicks). Since everything is local, there's no account to delete or data to clean up. If you want to come back later, just reinstall. You can simply export your data (json format for now) take it with you, and re-import it if you decide to return.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
@@ -484,6 +528,54 @@
     if (ctaForm) {
       ctaForm.addEventListener('submit', handleCtaSubmit);
     }
+    
+    // FAQ expand/collapse functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.closest('.faq-item');
+        const answer = faqItem.querySelector('.faq-answer');
+        const chevron = question.querySelector('.faq-chevron');
+        const isExpanded = question.getAttribute('aria-expanded') === 'true';
+        const questionText = question.querySelector('.faq-question-text').textContent.trim();
+        
+        // Track FAQ click in Umami
+        if (typeof window.umami !== 'undefined' && window.umami.track) {
+          window.umami.track('faq-click', { question: questionText, action: isExpanded ? 'close' : 'open' });
+        }
+        
+        // Close all other FAQ items
+        faqQuestions.forEach(otherQuestion => {
+          if (otherQuestion !== question) {
+            const otherItem = otherQuestion.closest('.faq-item');
+            const otherAnswer = otherItem.querySelector('.faq-answer');
+            const otherChevron = otherQuestion.querySelector('.faq-chevron');
+            otherQuestion.setAttribute('aria-expanded', 'false');
+            otherItem.classList.remove('expanded');
+            otherAnswer.style.maxHeight = null;
+            otherChevron.style.transform = 'rotate(0deg)';
+          }
+        });
+        
+        // Toggle current item
+        if (isExpanded) {
+          question.setAttribute('aria-expanded', 'false');
+          faqItem.classList.remove('expanded');
+          answer.style.maxHeight = null;
+          chevron.style.transform = 'rotate(0deg)';
+        } else {
+          question.setAttribute('aria-expanded', 'true');
+          faqItem.classList.add('expanded');
+          // Calculate height after padding is applied via CSS class
+          // Use requestAnimationFrame to ensure CSS has applied
+          requestAnimationFrame(() => {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          });
+          chevron.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
   </script>
 </body>
 </html>
