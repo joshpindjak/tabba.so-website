@@ -266,6 +266,24 @@
       </div>
     </section>
 
+    <!-- Installation Video Section -->
+    <section class="install-video-section">
+      <div class="container">
+        <div class="install-video-container">
+          <video class="install-video" loop playsinline muted>
+            <source src="assets/install/tabba-installation-chrome.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="install-video-overlay" id="install-video-overlay">
+            <h2 class="install-video-overlay-headline">Installing Tabba in 20 seconds</h2>
+            <button class="install-video-play-button" id="install-video-play-button" aria-label="Play installation video">
+              <i class="ph-fill ph-play-circle"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
       <div class="container">
@@ -340,7 +358,7 @@
               <i class="ph ph-chevron-down faq-chevron"></i>
             </button>
             <div class="faq-answer">
-              <p>Literally impossible. Tabba doesn't have servers, analytics, or any network connection for your data. When we say local-only, we mean your data never leaves your device. If you uninstall Tabba, your data goes with it.</p>
+              <p>Literally impossible. Tabba doesn't have servers, analytics, or any network connection for your data. When we say local-only, we mean your data never leaves your device. If you uninstall Tabba, your data goes with it. We offer an easy import/export feature to take your data with you and back it up.</p>
             </div>
           </div>
           <div class="faq-item">
@@ -577,6 +595,73 @@
         }
       });
     });
+    
+    // Installation video play button functionality
+    const installVideo = document.querySelector('.install-video');
+    const installVideoOverlay = document.getElementById('install-video-overlay');
+    const installVideoPlayButton = document.getElementById('install-video-play-button');
+    const installVideoContainer = document.querySelector('.install-video-container');
+    
+    function playInstallVideo() {
+      if (installVideo && installVideoOverlay) {
+        // Play the video
+        installVideo.play().catch(e => {
+          console.log('Video play prevented:', e);
+        });
+        
+        // Hide the overlay
+        installVideoOverlay.classList.add('hidden');
+        
+        // Track in Umami
+        if (typeof window.umami !== 'undefined' && window.umami.track) {
+          window.umami.track('install-video-play');
+        }
+      }
+    }
+    
+    // Play button click handler
+    if (installVideoPlayButton) {
+      installVideoPlayButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        playInstallVideo();
+      });
+    }
+    
+    // Overlay click handler (clicking anywhere on overlay plays video)
+    if (installVideoOverlay) {
+      installVideoOverlay.addEventListener('click', playInstallVideo);
+    }
+    
+    // Show controls on hover when video is playing
+    if (installVideo && installVideoContainer) {
+      let controlsTimeout;
+      
+      installVideoContainer.addEventListener('mouseenter', () => {
+        if (!installVideoOverlay || !installVideoOverlay.classList.contains('hidden')) {
+          return; // Don't show controls if overlay is visible
+        }
+        clearTimeout(controlsTimeout);
+        installVideo.setAttribute('controls', 'controls');
+      });
+      
+      installVideoContainer.addEventListener('mouseleave', () => {
+        controlsTimeout = setTimeout(() => {
+          installVideo.removeAttribute('controls');
+        }, 300);
+      });
+      
+      installVideo.addEventListener('click', () => {
+        clearTimeout(controlsTimeout);
+        installVideo.setAttribute('controls', 'controls');
+      });
+      
+      // Hide overlay when video starts playing
+      installVideo.addEventListener('play', () => {
+        if (installVideoOverlay) {
+          installVideoOverlay.classList.add('hidden');
+        }
+      });
+    }
   </script>
 </body>
 </html>
