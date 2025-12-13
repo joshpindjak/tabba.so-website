@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Changelog - Tabba</title>
+  <meta name="description" content="See what's new in Tabba. View all version updates and changes.">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://cloud.umami.is https://api-gateway.umami.dev;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="https://tabba.so/assets/favicon.ico">
+  <link rel="shortcut icon" href="https://tabba.so/assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://tabba.so/assets/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://tabba.so/assets/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://tabba.so/assets/favicon.png">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://tabba.so/changelog/">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#fdfdfc">
+
+  <!-- Phosphor Icons -->
+  <link rel="stylesheet" type="text/css" href="../assets/phosphor-icons/regular/style.css">
+  <link rel="stylesheet" type="text/css" href="../assets/phosphor-icons/fill/style.css">
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/variables.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/landing.css">
+  <style>
+    .changelog-section {
+      padding: var(--space-xxl) 0;
+      flex: 1;
+    }
+
+    .changelog-container {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    .changelog-version-list {
+      position: sticky;
+      top: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      max-height: calc(100vh - var(--space-lg) * 2);
+      overflow-y: auto;
+    }
+
+    .changelog-version-item {
+      padding: var(--space-sm) var(--space-md);
+      text-align: left;
+      border-radius: var(--border-radius);
+      transition: all var(--transition-base);
+      color: var(--text-secondary);
+      background-color: transparent;
+      font-size: var(--font-size-sm);
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+
+    .changelog-version-item:hover {
+      background-color: var(--surface-tertiary);
+      color: var(--text-primary);
+    }
+
+    .changelog-version-item.active {
+      color: var(--text-primary);
+      background-color: var(--surface-tertiary);
+    }
+
+    .changelog-title {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-xl) 0;
+      line-height: 1.2;
+      text-align: left;
+    }
+
+    .changelog-content {
+      max-width: 100%;
+    }
+
+    .changelog-content h2 {
+      font-size: clamp(1.5rem, 3vw, 1.75rem);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin: var(--space-xxl) 0 var(--space-lg) 0;
+      line-height: 1.3;
+      padding-top: var(--space-lg);
+      scroll-margin-top: var(--space-lg);
+    }
+
+    .changelog-content h2:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .changelog-content h3 {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin: var(--space-lg) 0 var(--space-sm) 0;
+      line-height: 1.4;
+    }
+
+    .changelog-content p {
+      font-size: var(--font-size-base);
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin: 0 0 var(--space-md) 0;
+    }
+
+    .changelog-content ul {
+      margin: 0 0 var(--space-md) 0;
+      padding-left: var(--space-lg);
+      color: var(--text-secondary);
+    }
+
+    .changelog-content li {
+      font-size: var(--font-size-base);
+      line-height: 1.7;
+      margin: 0 0 var(--space-sm) 0;
+      color: var(--text-secondary);
+    }
+
+    .changelog-content ul ul {
+      margin-top: var(--space-xs);
+      margin-bottom: var(--space-xs);
+    }
+
+    .changelog-content strong {
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+    }
+
+    .changelog-content a {
+      color: var(--text-primary);
+      text-decoration: underline;
+      text-decoration-color: var(--text-tertiary);
+      text-underline-offset: 2px;
+      transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+    }
+
+    .changelog-content a:hover {
+      color: var(--text-secondary);
+      text-decoration-color: var(--text-secondary);
+    }
+
+    .changelog-content code {
+      font-family: var(--font-monospace);
+      font-size: 0.9em;
+      background-color: var(--surface-tertiary);
+      padding: 0.2em 0.4em;
+      border-radius: var(--border-radius-sm);
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 991px) {
+      .changelog-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+
+      .changelog-version-list {
+        position: static;
+        max-height: none;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: visible;
+        padding-bottom: var(--space-sm);
+      }
+
+      .changelog-version-item {
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .changelog-section {
+        padding: var(--space-xl) 0;
+      }
+
+      .changelog-title {
+        margin-bottom: var(--space-lg);
+      }
+    }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="e64052cb-23e2-4da2-88e3-499552ff17c7"></script>
+</head>
+<body>
+  <div class="page-content">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-content">
+          <a href="/" class="navbar-logo" aria-label="Home">
+            <img src="../assets/tabba-logo.svg" alt="Tabba logo" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Changelog Section -->
+    <section class="changelog-section">
+      <div class="container">
+        <h1 class="changelog-title">Changelog</h1>
+        <div class="changelog-container">
+          <!-- Sticky Version List -->
+          <nav class="changelog-version-list" aria-label="Version navigation">
+            <a href="#v0.5.0" class="changelog-version-item active" data-version="v0.5.0">0.5.0</a>
+            <a href="#v0.4.0" class="changelog-version-item" data-version="v0.4.0">0.4.0</a>
+            <a href="#v0.3.0" class="changelog-version-item" data-version="v0.3.0">0.3.0</a>
+            <a href="#v0.2.0" class="changelog-version-item" data-version="v0.2.0">0.2.0</a>
+            <a href="#v0.1.0" class="changelog-version-item" data-version="v0.1.0">0.1.0</a>
+          </nav>
+
+          <!-- Changelog Content -->
+          <div class="changelog-content">
+
+            <h2 id="v0.5.0">[0.5.0] - 2025-12-13</h2>
+            <h3>Updated</h3>
+            <ul>
+              <li>Removed ActiveTab permissions because we actually didn't need it.</li>
+              <li>Added support for Firefox. This is the first version (0.5.0) that has been uploaded to the Mozilla Developer Hub, pending approval by the Mozilla security team.</li>
+              <li><strong>Calendar:</strong>
+                <ul>
+                  <li>Fixed bug where empty/erased notes were showing up in the grid, even if the note had 0 characters in it.</li>
+                </ul>
+              </li>
+              <li><strong>Notes (side panel)</strong>
+                <ul>
+                  <li>Fixed bug: Empty/erased notes were showing up in the grid, even if the note had 0 characters in it (similar bug as the calendar since both are linked).</li>
+                  <li>Fixed bug: Really long strings of text (e.g. an API key) were breaking the note flyout panel.</li>
+                  <li>Changed the date sorting language to be more clear.</li>
+                </ul>
+              </li>
+              <li><strong>Popup</strong>
+                <ul>
+                  <li>Redesigned popup entirely. Added some visual feedback once successfully adding a todo item.</li>
+                  <li>Better color/theme management so it matches your defined color scheme</li>
+                </ul>
+              </li>
+              <li>To Do
+                <ul>
+                  <li>Changed "Done" to "Completed", based on user feedback, this was clearer language.</li>
+                </ul>
+              </li>
+              <li><strong>Draw</strong>
+                <ul>
+                  <li>Better canvas/art sizing to work on screens big and small. Still refining this.</li>
+                </ul>
+              </li>
+            </ul>
+            <h3>Added</h3>
+            <ul>
+              <li>Timezone planner:
+                <ul>
+                  <li>Added better differentiation between each day on the actual timeline. 11pm and 12am receive a special styling to indicate end of day/beginning of day.</li>
+                </ul>
+              </li>
+              <li>Bookmarks:
+                <ul>
+                  <li>New emoji selector when adding a bookmark. I've included <a href="https://github.com/missive/emoji-mart">Emojimart</a> which will likely be used elsewhere in the app (future plans for adding emoji elsewhere)</li>
+                </ul>
+              </li>
+            </ul>
+            <h3>Known Issues</h3>
+            <ul>
+              <li>Unable to add hyperlinked text (CMD+K) when creating a To do item.</li>
+              <li>Unfinished features exist in the codebase, but hidden: RSS reader and Date calculator</li>
+              <li>Strange behavior when searching for tags while the <strong>tag dropdown menu</strong> is anchored from a position lower than itself.</li>
+              <li>Ongoing: <strong>UI polish</strong> needed in various places.</li>
+              <li>Note input <strong>inherits page styling</strong> from pasted sources. Not sure why it's doing that.</li>
+            </ul>
+
+            <h2 id="v0.4.0">[0.4.0] - 2025-12-02 (Beta Release)</h2>
+            <h3>Added</h3>
+            <ul>
+              <li>Finally decided on a name: Tabba</li>
+              <li>Launched to Chrome Web Store 🎉</li>
+              <li>Did some testing + support for Microsoft Edge</li>
+            </ul>
+            <h3>Known Issues</h3>
+            <ul>
+              <li>Unable to add hyperlinked text (CMD+K) when creating a To do item.</li>
+              <li>Unfinished (Alpha) features: RSS reader and Date calculator</li>
+              <li>Design a better Popup (e.g. when you click the extension icon in the toolbar).</li>
+              <li>Ongoing: UI polish needed in various places.</li>
+            </ul>
+
+            <h2 id="v0.3.0">[0.3.0] - 2025-11-29</h2>
+            <h3>Added</h3>
+            <ul>
+              <li>Core features of the extension:
+                <ul>
+                  <li>Replaces default new tab screen</li>
+                  <li>Always remembers your last-selected tab.</li>
+                  <li>No user account required</li>
+                  <li>All user data is stored on the user's local browser (<a href="https://web.dev/articles/indexeddb">IndexedDB</a>) and not synced anywhere. Some settings are stored in chrome.storage.local for quick access (settings, last-selected tool, etc.)</li>
+                  <li>Limited 3rd party dependencies: Currently just <a href="https://github.com/phosphor-icons/web">Phosphor Icons Web</a>. Absolutely no data tracking, analytics, etc.</li>
+                </ul>
+              </li>
+              <li>Calendar
+                <ul>
+                  <li>Hour-based grid with year/quarter/month/week views</li>
+                </ul>
+              </li>
+              <li>Notes
+                <ul>
+                  <li>Hour-based note taking: Clicking an hour and typing creates a new note for that hour.</li>
+                  <li>Notes auto-save after a few seconds</li>
+                  <li>Add tags to a note</li>
+                  <li>Set a Note as "starred"</li>
+                  <li>View all notes in a flyout panel
+                    <ul>
+                      <li>Notes are grouped by year → day → time</li>
+                      <li>Sort notes</li>
+                      <li>Filter notes by tag/starred status</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>Tags
+                <ul>
+                  <li>Added tagging functionality.</li>
+                  <li>Tags are shared between Notes and To do items</li>
+                  <li>Tag names can be edited in-situ or via Settings</li>
+                </ul>
+              </li>
+              <li>To do
+                <ul>
+                  <li>Simple todo list: Add items and mark items as Done</li>
+                  <li>Delete items</li>
+                  <li>Sort options:
+                    <ul>
+                      <li>Manual (drag and drop)</li>
+                      <li>Created: newest first or oldest first</li>
+                    </ul>
+                  </li>
+                  <li>Create filtered lists with Tags</li>
+                </ul>
+              </li>
+              <li>Symbols
+                <ul>
+                  <li>Copy/paste symbols</li>
+                </ul>
+              </li>
+              <li>Bookmarks
+                <ul>
+                  <li>Save URLs as a clickable bookmark</li>
+                  <li>When inputting a URL, the favicon is rendered, or replaced with an emoji</li>
+                </ul>
+              </li>
+              <li>Symbols
+                <ul>
+                  <li>Click to copy and paste symbols</li>
+                  <li>Optional: Remembers your Most Frequently used symbols for easy access (top row)</li>
+                  <li>Search for symbols by name or keyword</li>
+                  <li>Change the size of the grid</li>
+                </ul>
+              </li>
+              <li>Draw
+                <ul>
+                  <li>Pixel/bitmap-inspired drawing tool (for relaxation and stress relief)</li>
+                  <li>Change color and size (1x1 or 4x4) of the drawing tool</li>
+                  <li>Change size of pixel grid</li>
+                  <li>Export to PNG (1080x1080)</li>
+                  <li>Save drawings to Gallery</li>
+                  <li>Create folder of drawings in Gallery. Folder card thumbnails are dynamically generated showing the first 3 drawings of any folder.</li>
+                  <li>Delete/bulk delete</li>
+                </ul>
+              </li>
+              <li>Settings
+                <ul>
+                  <li>Basic settings panel for customization and config</li>
+                  <li>Import/export data for backup. When importing, you now see a Success screen with the # of items successfully imported.</li>
+                  <li>Added some basic stats in the "Data" tab</li>
+                </ul>
+              </li>
+              <li>Hotkey support:
+                <ul>
+                  <li><code>Esc</code> to close dialogs/panels</li>
+                  <li><code>`</code> + 1, 2, 3, etc. to switch between tool tabs</li>
+                </ul>
+              </li>
+              <li>Date calculator (ALPHA)
+                <ul>
+                  <li>Add/subtract dates</li>
+                  <li>Count days in between two dates</li>
+                  <li>Need to do more testing and ensure calculations are correct.</li>
+                </ul>
+              </li>
+              <li>RSS (ALPHA)
+                <ul>
+                  <li>Basic RSS reader, but lacking many critical features. Not quite ready for the public use yet.</li>
+                  <li>If this becomes too feature-intensive, might remove feature.</li>
+                  <li>Use at your own risk.</li>
+                </ul>
+              </li>
+              <li>Time (BETA)
+                <ul>
+                  <li>Simple analog clock</li>
+                  <li>Mini hidden easter egg can be found by clicking the clock center.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h2 id="v0.2.0">[0.2.0] - 2025-11-09</h2>
+            <h3>Added</h3>
+            <ul>
+              <li>Basic note taking</li>
+              <li>Revamped design system to work off of variables, more scaleable</li>
+              <li>Refreshed design</li>
+            </ul>
+
+            <h2 id="v0.1.0">[0.1.0] - 2024-11-02</h2>
+            <h3>Added</h3>
+            <ul>
+              <li>Clock/calendar grid: Designed and figured out the basic structure of how I want it to look/work.</li>
+              <li>Settings:
+                <ul>
+                  <li>Set custom hours on the calendar grid</li>
+                  <li>Color customization: Set accent color, change grid colors</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-left">
+            <p>© 2025 Tabba.so</p>
+          </div>
+          <div class="footer-right">
+            <a href="mailto:hey@tabba.so">hey@tabba.so</a>
+            <span class="footer-separator">|</span>
+            <a href="../privacy.html">Privacy Policy</a>
+            <span class="footer-separator">|</span>
+            <a href="../terms.html">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  
+  <script>
+    // Version list navigation
+    const versionItems = document.querySelectorAll('.changelog-version-item');
+    const versionSections = document.querySelectorAll('.changelog-content h2[id]');
+
+    // Update active version based on scroll position
+    function updateActiveVersion() {
+      const scrollPosition = window.scrollY + 100; // Offset for sticky header
+
+      versionSections.forEach((section, index) => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        const versionId = section.getAttribute('id');
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          versionItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('data-version') === versionId) {
+              item.classList.add('active');
+            }
+          });
+        }
+      });
+    }
+
+    // Smooth scroll with easing function
+    function smoothScrollTo(targetPosition, duration = 600) {
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      let startTime = null;
+
+      function easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
+
+      function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const ease = easeInOutCubic(progress);
+        
+        window.scrollTo(0, startPosition + distance * ease);
+        
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      }
+
+      requestAnimationFrame(animation);
+    }
+
+    // Handle click on version items
+    versionItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = item.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+          const offset = 80; // Account for sticky header
+          const targetPosition = targetSection.offsetTop - offset;
+          
+          smoothScrollTo(targetPosition);
+
+          // Update active state
+          versionItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Update active version on scroll
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(updateActiveVersion, 10);
+    });
+
+    // Initial update
+    updateActiveVersion();
+  </script>
+</body>
+</html>
+
