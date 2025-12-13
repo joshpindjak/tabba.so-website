@@ -109,6 +109,46 @@
       "keywords": "new tab, chrome extension, productivity, time management, privacy, local storage, calendar grid, note taking"
     }
     </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Will Tabba slow down my browser?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tabba is built for speed. Unlike web-based tools that require constant server calls, everything runs locally in your browser. The extension loads in under 100ms and uses minimal memory, faster than loading most websites you'd typically see on a new tab. Before launch, we stress-tested the extension with thousands of notes, todo items, and various amounts of other saved data just to ensure Tabba works at scale."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you really not see my data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Literally impossible. Tabba doesn't have servers, analytics, or any network connection for your data. When we say local-only, we mean your data never leaves your device. If you uninstall Tabba, your data goes with it. We offer an easy import/export feature to take your data with you and back it up."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this approved by Chrome?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tabba is in Chrome's Web Store but currently unlisted during our closed beta. Once we complete beta testing, it'll be publicly available. All extension code (including future updates) is fully reviewed by Chrome's security team before release."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I don't like it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Just uninstall like any Chrome extension (3 clicks). Since everything is local, there's no account to delete or data to clean up. If you want to come back later, just reinstall. You can simply export your data (json format for now) take it with you, and re-import it if you decide to return."
+        }
+      }
+    ]
+  }
+  </script>
   
   <!-- Phosphor Icons -->
   <link rel="stylesheet" type="text/css" href="assets/phosphor-icons/regular/style.css">
@@ -343,40 +383,45 @@
     <section class="faq-section">
       <div class="container">
         <div class="faq-content">
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span class="faq-question-text">Will Tabba slow down my browser?</span>
-              <i class="ph ph-chevron-down faq-chevron"></i>
-            </button>
-            <div class="faq-answer">
-              <p>Tabba is built for speed. Unlike web-based tools that require constant server calls, everything runs locally in your browser. The extension loads in under 100ms and uses minimal memory, faster than loading most websites you'd typically see on a new tab. Before launch, we stress-tested the extension with thousands of notes, todo items, and various amounts of other saved data just to ensure Tabba works at scale.</p>
-            </div>
+          <div class="faq-left">
+            <h2 class="faq-headline">Frequently asked questions</h2>
           </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span class="faq-question-text">Can you really not see my data?</span>
-              <i class="ph ph-chevron-down faq-chevron"></i>
-            </button>
-            <div class="faq-answer">
-              <p>Literally impossible. Tabba doesn't have servers, analytics, or any network connection for your data. When we say local-only, we mean your data never leaves your device. If you uninstall Tabba, your data goes with it. We offer an easy import/export feature to take your data with you and back it up.</p>
+          <div class="faq-right">
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span class="faq-question-text">Will Tabba slow down my browser?</span>
+                <i class="ph ph-chevron-down faq-chevron"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Tabba is built for speed. Unlike web-based tools that require constant server calls, everything runs locally in your browser. The extension loads in under 100ms and uses minimal memory, faster than loading most websites you'd typically see on a new tab. Before launch, we stress-tested the extension with thousands of notes, todo items, and various amounts of other saved data just to ensure Tabba works at scale.</p>
+              </div>
             </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span class="faq-question-text">Is this approved by Chrome?</span>
-              <i class="ph ph-chevron-down faq-chevron"></i>
-            </button>
-            <div class="faq-answer">
-              <p>Tabba is in Chrome's Web Store but currently unlisted during our closed beta. Once we complete beta testing, it'll be publicly available. All extension code (including future updates) is fully reviewed by Chrome's security team before release.</p>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span class="faq-question-text">Can you really not see my data?</span>
+                <i class="ph ph-chevron-down faq-chevron"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Literally impossible. Tabba doesn't have servers, analytics, or any network connection for your data. When we say local-only, we mean your data never leaves your device. If you uninstall Tabba, your data goes with it. We offer an easy import/export feature to take your data with you and back it up.</p>
+              </div>
             </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span class="faq-question-text">What if I don't like it?</span>
-              <i class="ph ph-chevron-down faq-chevron"></i>
-            </button>
-            <div class="faq-answer">
-              <p>Just uninstall like any Chrome extension (3 clicks). Since everything is local, there's no account to delete or data to clean up. If you want to come back later, just reinstall. You can simply export your data (json format for now) take it with you, and re-import it if you decide to return.</p>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span class="faq-question-text">Is this approved by Chrome?</span>
+                <i class="ph ph-chevron-down faq-chevron"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Tabba is in Chrome's Web Store but currently unlisted during our closed beta. Once we complete beta testing, it'll be publicly available. All extension code (including future updates) is fully reviewed by Chrome's security team before release.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span class="faq-question-text">What if I don't like it?</span>
+                <i class="ph ph-chevron-down faq-chevron"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Just uninstall like any Chrome extension (3 clicks). Since everything is local, there's no account to delete or data to clean up. If you want to come back later, just reinstall. You can simply export your data (json format for now) take it with you, and re-import it if you decide to return.</p>
+              </div>
             </div>
           </div>
         </div>
