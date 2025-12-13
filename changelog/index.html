@@ -516,6 +516,12 @@
         const targetId = item.getAttribute('href').substring(1);
         const targetSection = document.getElementById(targetId);
         
+        // Track version navigation click in Umami
+        if (typeof window.umami !== 'undefined' && window.umami.track) {
+          const version = item.getAttribute('data-version');
+          window.umami.track('changelog-version-click', { version: version });
+        }
+        
         if (targetSection) {
           const offset = 80; // Account for sticky header
           const targetPosition = targetSection.offsetTop - offset;
